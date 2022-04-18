@@ -28,19 +28,16 @@ namespace UI
             Header header = new Header(Driver.Browser);
             CareersPage careersPage = new CareersPage(Driver.Browser);
             header.NavigateToPage("Company", "Careers");
+            careersPage.SwitchToIframe();
             var jobList = careersPage.AllJobList;
-
-            Assert.Pass();
-        }
-
-        [Test]
-        public void ListOfJobsForManager()
-        {
-            //Header header = new Header(driver);
-            //header.NavigateToPage("Company", "Careers");
-            CareersPage careersPage = new CareersPage(Driver.Browser);
+            Console.WriteLine($"============== All available Job List - Count - {jobList.Count}=========================");
+            foreach (IWebElement ele in jobList)
+                Console.WriteLine(ele.Text);
             careersPage.SelectDepartment("Engagement/Project Management");
-            Assert.Pass();
+            jobList = careersPage.JobList;
+            Console.WriteLine($"============== Job with title contain Manager  Count - {jobList.Count}=========================");
+            foreach (IWebElement ele in jobList)
+                Console.WriteLine(ele.Text);
         }
 
         [OneTimeTearDown]

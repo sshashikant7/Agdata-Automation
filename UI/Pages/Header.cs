@@ -22,11 +22,12 @@ namespace UI.Pages
 
         public Header NavigateToPage(string menu,string subMenu)
         {
-            NevigationMenu(menu).Click();
-            //Actions actions = new Actions(driver);
-            //actions.MoveToElement(NevigationMenu(menu)).Build().Perform();
-            Thread.Sleep(2000);
+            //NevigationMenu(menu);
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(NevigationMenu(menu)).Build().Perform();
+            Thread.Sleep(1000);
             NevigationSubMenu(subMenu).Click();
+            Thread.Sleep(5000);
             return this;
         }
     }

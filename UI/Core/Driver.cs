@@ -60,28 +60,20 @@ namespace UI.Core
             switch (browserType)
             {
                 case BrowserTypes.Firefox:
-                    if (browserOptions != null)
-                        Browser = new FirefoxDriver((FirefoxOptions)browserOptions);
-                    else
-                        Browser = new FirefoxDriver();
+                    //Implementation for FF
                     break;
 
-                //case BrowserTypes.InternetExplorer:
-                //    if (browserOptions != null)
-                //        Browser = new InternetExplorerDriver((InternetExplorerOptions)browserOptions);
-                //    else
-                //        Browser = new InternetExplorerDriver();
-                //    break;
+                case BrowserTypes.InternetExplorer:
+                    //Implimenation of IE
+                    break;
 
                 case BrowserTypes.Chrome:
                     var chromeExeDriverPath = $"{Environment.CurrentDirectory}/SeleniumSupport/ChromeDriver/";
-                    //driver = new ChromeDriver(chromeExeDriverPath);
-                    //driver.Manage().Window.Maximize();
-                    //driver.Navigate().GoToUrl(applicationURL);
-                    if (browserOptions != null)
-                        Browser = new ChromeDriver((ChromeOptions)browserOptions);
-                    else
-                        Browser = new ChromeDriver(chromeExeDriverPath);
+                    var cOptions = new ChromeOptions();
+                    cOptions.AddArguments("chrome.switches", "--disable-extensions");
+                    cOptions.AddUserProfilePreference("download.default_directory", Environment.CurrentDirectory);
+                    cOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+                    Browser = new ChromeDriver(chromeExeDriverPath, cOptions);
                     break;
             }
             BrowserWait = new WebDriverWait(Browser, TimeSpan.FromSeconds(defaultTimeOut));
