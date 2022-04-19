@@ -29,12 +29,12 @@ namespace UI
             CareersPage careersPage = new CareersPage(Driver.Browser);
             header.NavigateToPage("Company", "Careers");
             careersPage.SwitchToIframe();
-            var jobList = careersPage.AllJobList;
+            var jobList = careersPage.AllOpenPositionWithRequiredTitle;
             Console.WriteLine($"============== All available Job List - Count - {jobList.Count}=========================");
             foreach (IWebElement ele in jobList)
                 Console.WriteLine(ele.Text);
             careersPage.SelectDepartment("Engagement/Project Management");
-            jobList = careersPage.JobList;
+            jobList = careersPage.OpenPositionWithRequiredTitle;
             Console.WriteLine($"============== Job with title contain Manager  Count - {jobList.Count}=========================");
             foreach (IWebElement ele in jobList)
                 Console.WriteLine(ele.Text);

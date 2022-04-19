@@ -20,8 +20,8 @@ namespace UI.Pages
 
         private IWebElement AllLocationDropdown(string menu) => driver.FindElement(By.XPath("//select[@name='ctl00$pageContent$ctl00$ctl00$jobloc']"));
         private IWebElement AllDeptmentDropdown => driver.FindElement(By.XPath("//select[@name='ctl00$pageContent$ctl00$ctl00$jobdept']"));
-        public IList<IWebElement> AllJobList => driver.FindElements(By.XPath("//div[@id='rightcol']//ul[@class='jobs']"));
-        public IList<IWebElement> JobList => driver.FindElements(By.XPath("//ul[@class='jobs']"));
+        public IList<IWebElement> AllOpenPosition => driver.FindElements(By.XPath("//div[@id='rightcol']//ul[@class='jobs']"));
+        public IList<IWebElement> OpenPositionWithRequiredTitle => driver.FindElements(By.XPath("//ul[@class='jobs']"));
         
 
         public void SwitchToIframe()

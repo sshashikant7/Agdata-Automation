@@ -28,7 +28,7 @@ namespace Service
         public async void PostPosts(PostRequest request)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(request), System.Text.Encoding.UTF8, "application/json");
-            var result=await baseUrl.AppendPathSegment("posts").PostJsonAsync(content).ConfigureAwait(false);
+            var result=await baseUrl.WithHeader("Content-type", "application/json, charset=UTF-8").AppendPathSegment("posts").PostJsonAsync(content).ConfigureAwait(false);
         }
 
         public async void PutPost(PutRequest request,string postID)
