@@ -29,7 +29,7 @@ namespace UI
             CareersPage careersPage = new CareersPage(Driver.Browser);
             header.NavigateToPage("Company", "Careers");
             careersPage.SwitchToIframe();
-            var jobList = careersPage.AllOpenPositionWithRequiredTitle;
+            var jobList = careersPage.AllOpenPosition;
             Console.WriteLine($"============== All available Job List - Count - {jobList.Count}=========================");
             foreach (IWebElement ele in jobList)
                 Console.WriteLine(ele.Text);
